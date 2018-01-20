@@ -15,6 +15,9 @@ public interface SysUserMapper {
     @Select("select * from SysUser where id=#{id}")
     SysUser findOneById(@Param("id") int id);
 
+    @Select("select * from SysUser where loginId=#{loginId} or mobile=#{loginId} or email=#{loginId}")
+    SysUser findOneByLoginId(@Param("loginId") String loginId);
+
     @Update("update SysUser set LoginId=#{loginId},Password=#{password},Mobile=#{mobile},Email=#{email},WeiXin=#{weiXin},QQ=#{qQ},RealName=#{realName},Status=#{status},LastLoginDatetime=#{lastLoginDatetime} where Id = #{id}")
     int modifySysUser(SysUser SysUser);
 

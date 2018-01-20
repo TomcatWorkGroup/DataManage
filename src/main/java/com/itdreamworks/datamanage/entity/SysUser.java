@@ -6,6 +6,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class SysUser implements Serializable {
+    public static final int STATUS_ENABLE = 1;
+    public static final int STATUS_DISABLE = 0;
     private int id,status;
     private String loginId,password,mobile,email,weiXin,qQ,realName;
 

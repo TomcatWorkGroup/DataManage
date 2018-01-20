@@ -15,6 +15,9 @@ public interface EmployeeMapper {
     @Select("select * from Employee where id=#{id}")
     Employee findOneById(@Param("id") int id);
 
+    @Select("select * from SysUser where mobile=#{loginId} or email=#{loginId}")
+    Employee findOneByLoginId(@Param("loginId") String loginId);
+
     @Update("update Employee set OrgType=#{orgType},OrgId=#{orgId},Password=#{password},Mobile=#{mobile},Email=#{email},WeiXin=#{weiXin},QQ=#{qQ},RealName=#{realName},Status=#{status},LastLoginDatetime=#{lastLoginDatetime},Mark=#{mark} where Id = #{id}")
     int modifyEmployee(Employee Employee);
 

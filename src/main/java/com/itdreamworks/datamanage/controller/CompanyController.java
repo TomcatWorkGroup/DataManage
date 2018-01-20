@@ -6,33 +6,34 @@ import com.itdreamworks.datamanage.mapper.CompanyMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
-public class HomeController {
+@RequestMapping(value = "/company")
+public class CompanyController {
     @Autowired
     CompanyMapper mapper;
 
-    @GetMapping(value = "/home/list")
+    @GetMapping(value = "/list")
     public List<Company> getAllCompany() {
-        List<Company> list = mapper.findAll();
-        return list;
+        return mapper.findAll();
     }
 
-    @PostMapping(value = "/home/create")
+    @PostMapping(value = "/create")
     public boolean create(Company company) {
         return mapper.addCompany(company) > 0;
     }
 
 
-    @PostMapping(value = "/home/modify")
+    @PostMapping(value = "/modify")
     public boolean modifyCompany(Company company) {
         return mapper.modifyCompany(company) > 0;
     }
 
-    @PostMapping(value = "/home/change")
+    @PostMapping(value = "/change")
     public boolean modifyCompanyStatus(Company company) {
         return mapper.changeCompanyStatus(company) > 0;
     }
