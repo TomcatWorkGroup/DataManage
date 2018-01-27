@@ -1,35 +1,39 @@
-package com.itdreamworks.datamanage.controller;
+package com.itdreamworks.datamanage.daocontroller;
 
 import com.itdreamworks.datamanage.entity.Device;
 import com.itdreamworks.datamanage.mapper.DeviceMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping(value = "/device")
 public class DeviceController {
     @Autowired
     DeviceMapper mapper;
 
-    @GetMapping(value = "/device/list")
+    @GetMapping(value = "/list")
     public List<Device> getAll() {
         return mapper.findAll();
     }
 
-    @PostMapping(value = "/device/create")
+    @GetMapping(value = "/sell")
+    public List<Device> getSell() {
+        return mapper.findAllByStatus(Device.STATUS_SELL);
+    }
+
+    @PostMapping(value = "/create")
     public boolean create(Device device) {
         return mapper.addDevice(device) > 0;
     }
 
-    @PostMapping(value = "/device/modify")
+    @PostMapping(value = "/modify")
     public boolean modifyDevice(Device device) {
         return mapper.modifyDevice(device) > 0;
     }
 
-    @PostMapping(value = "/device/change")
+    @PostMapping(value = "/change")
     public boolean modifyDeviceStatus(Device device) {
         return mapper.changeDeviceStatus(device) > 0;
     }

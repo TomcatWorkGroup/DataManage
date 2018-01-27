@@ -3,7 +3,7 @@ package com.itdreamworks.datamanage.entity;
 import java.io.Serializable;
 
 public class Customer implements Serializable {
-    private int id,enterpriserId,status;
+    private int id, enterpriseId,status;
     private String customerName;
     public int getId() {
         return id;
@@ -29,11 +29,11 @@ public class Customer implements Serializable {
         this.customerName = customerName;
     }
 
-    public int getEnterpriserId() {
-        return enterpriserId;
+    public int getEnterpriseId() {
+        return enterpriseId;
     }
 
-    public void setEnterpriserId(int enterpriserId) {
-        this.enterpriserId = enterpriserId;
+    public void setEnterpriseId(int enterpriseId) {
+        this.enterpriseId = enterpriseId;
     }
 }

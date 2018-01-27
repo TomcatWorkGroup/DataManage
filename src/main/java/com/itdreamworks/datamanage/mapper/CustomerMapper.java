@@ -15,13 +15,13 @@ public interface CustomerMapper {
     @Select("select * from Customer where id=#{id}")
     Customer findOneById(@Param("id") int id);
 
-    @Update("update Customer set EnterpriserId=#{enterpriserId},CustomerName=#{customerName},Status=#{status} where Id = #{id}")
+    @Update("update Customer set EnterpriseId=#{enterpriseId},CustomerName=#{customerName},Status=#{status} where Id = #{id}")
     int modifyCustomer(Customer customer);
 
     @Update("update Customer set Status=#{status} where Id=#{id}")
     int changeCustomerStatus(Customer customer);
 
-    @Insert("insert into Customer (EnterpriserId,CustomerName,Status) values (#{enterpriserId},#{customerName},#{status})")
+    @Insert("insert into Customer (EnterpriseId,CustomerName,Status) values (#{enterpriseId},#{customerName},#{status})")
     int addCustomer(Customer customer);
 
 

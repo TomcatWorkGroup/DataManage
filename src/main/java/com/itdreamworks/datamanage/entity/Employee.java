@@ -6,6 +6,9 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Employee implements Serializable {
+    public static final int STATUS_ENABLE=1;
+    public static final int STATUS_DISABLE=0;
+
     private int id,orgType,orgId,status;
     private String password,mobile,email,weiXin,qQ,realName,mark;
     @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")

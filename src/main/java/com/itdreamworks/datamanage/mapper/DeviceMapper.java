@@ -12,6 +12,10 @@ public interface DeviceMapper {
     @ResultType(Device.class)
     List<Device> findAll();
 
+    @Select("select * from Device where status=#{status}")
+    @ResultType(Device.class)
+    List<Device> findAllByStatus(@Param("status") int status);
+
     @Select("select * from Device where id=#{id}")
     Device findOneById(@Param("id") int id);
 

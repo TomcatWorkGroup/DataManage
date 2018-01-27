@@ -6,6 +6,9 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Device implements Serializable {
+    public static final int STATUS_SELL = 1;
+    public static final int STATUS_READY = 0;
+
     private int id,enterpriseId,manufacturerId,status,runStatus;
     private String deviceNo,nickName;
 

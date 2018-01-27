@@ -1,4 +1,4 @@
-package com.itdreamworks.datamanage.controller;
+package com.itdreamworks.datamanage.daocontroller;
 
 import com.itdreamworks.datamanage.entity.Manufacturer;
 import com.itdreamworks.datamanage.mapper.ManufacturerMapper;
