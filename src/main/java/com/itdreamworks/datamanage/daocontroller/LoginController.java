@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * 临时用来做身份认证
+ * 将来所有身份认证功能均转移至身份认证与授权节点
+ */
 @RestController
 @RequestMapping(value = "/account")
 public class LoginController {

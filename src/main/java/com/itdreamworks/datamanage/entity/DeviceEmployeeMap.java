@@ -3,8 +3,11 @@ package com.itdreamworks.datamanage.entity;
 import java.io.Serializable;
 
 public class DeviceEmployeeMap implements Serializable {
+    public static final String TABLE_NAME="Device_Employee_Map";
+    public static final String COLUMN_DEVICE_ID="DeviceId";
+    public static final String COLUMN_EMPLOYEE_ID="EmployeeId";
+
     private int id,employeeId,deviceId;
-    private String deviceCode,nickName;
 
     public int getId() {
         return id;
@@ -29,21 +32,4 @@ public class DeviceEmployeeMap implements Serializable {
     public void setDeviceId(int deviceId) {
         this.deviceId = deviceId;
     }
-
-    public String getDeviceCode() {
-        return deviceCode;
-    }
-
-    public void setDeviceCode(String deviceCode) {
-        this.deviceCode = deviceCode;
-    }
-
-    public String getNickName() {
-        return nickName;
-    }
-
-    public void setNickName(String nickName) {
-        this.nickName = nickName;
-    }
-
 }

@@ -16,10 +16,14 @@ public interface DeviceMapper {
     @ResultType(Device.class)
     List<Device> findAllByStatus(@Param("status") int status);
 
+    @Select("select * from Device where EnterpriseId=#{enterpriseid} and ManufacturerId=#{manufacturerid}")
+    @ResultType(Device.class)
+    List<Device> search(@Param("enterpriseid") int status,@Param("manufacturerid") int manufacturerid);
+
     @Select("select * from Device where id=#{id}")
     Device findOneById(@Param("id") int id);
 
-    @Update("update Device set EnterpriseId=#{enterpriseId},DeviceNo=#{deviceNo},ManufacturerId=#{manufacturerId},Status=#{status},RunStatus=#{runStatus},ImportDatetime=#{importDatetime},NickName=#{nickName} where Id = #{id}")
+    @Update("update Device set DeviceNo=#{deviceNo},Status=#{status},RunStatus=#{runStatus},NickName=#{nickName} where Id = #{id}")
     int modifyDevice(Device Device);
 
     @Update("update Device set Status=#{status} where Id=#{id}")

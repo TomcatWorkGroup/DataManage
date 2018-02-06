@@ -3,10 +3,7 @@ package com.itdreamworks.datamanage.daocontroller;
 import com.itdreamworks.datamanage.entity.Employee;
 import com.itdreamworks.datamanage.mapper.EmployeeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,6 +21,11 @@ public class EmployeeController {
     @PostMapping(value = "/create")
     public boolean create(Employee employee) {
         return mapper.addEmployee(employee) > 0;
+    }
+
+    @PostMapping(value = "/search")
+    public List<Employee> search(@RequestParam(name = "orgType") int orgType,@RequestParam(name = "orgId") int orgId) {
+        return mapper.findEmployeesByOrg(orgType,orgId);
     }
 
     @PostMapping(value = "/modify")

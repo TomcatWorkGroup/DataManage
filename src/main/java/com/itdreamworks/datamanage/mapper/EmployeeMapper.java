@@ -12,6 +12,10 @@ public interface EmployeeMapper {
     @ResultType(Employee.class)
     List<Employee> findAll();
 
+    @Select("select * from Employee where OrgType = #{orgType} and OrgId = #{orgId}")
+    @ResultType(Employee.class)
+    List<Employee> findEmployeesByOrg(@Param("orgType") int orgType,@Param("orgId") int orgId);
+
     @Select("select * from Employee where id=#{id}")
     Employee findOneById(@Param("id") int id);
 

@@ -6,3 +6,5 @@ spring:
     url: jdbc:mysql://39.106.168.77:3306/bksrDB?useUnicode=true&characterEncoding=utf-8
     username: dba_user
     password: Test@163.com
+server:
+  port: 8081

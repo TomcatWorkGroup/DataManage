@@ -1,31 +1,41 @@
 package com.itdreamworks.datamanage.daocontroller;
 
 import com.itdreamworks.datamanage.entity.DeviceEmployeeMap;
+import com.itdreamworks.datamanage.entity.DeviceEmployeeMapView;
 import com.itdreamworks.datamanage.mapper.DeviceEmployeeMapMapper;
+import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping(value = "/dem")
 public class DeviceEmployeeMapController {
     @Autowired
     DeviceEmployeeMapMapper mapper;
 
-    @GetMapping(value = "/deviceEmployeeMap/list")
-    public List<DeviceEmployeeMap> getAll() {
-        return mapper.findAll();
-    }
 
-    @PostMapping(value = "/deviceEmployeeMap/create")
+    @PostMapping(value = "/create")
     public boolean create(DeviceEmployeeMap deviceEmployeeMap) {
-        return mapper.addDeviceEmployeeMap(deviceEmployeeMap) > 0;
+        if(mapper.checkMap(deviceEmployeeMap)>0){
+            return true;
+        }else{
+            return mapper.addDeviceEmployeeMap(deviceEmployeeMap) > 0;
+        }
+    }
+    @PostMapping(value = "/get/device")
+    public List<DeviceEmployeeMapView> getDeviceEmployeeMapViewByDevice(@RequestParam(name = "deviceId") int deviceId){
+        return mapper.findByDevice(deviceId);
     }
 
-    @PostMapping(value = "/deviceEmployeeMap/modify")
-    public boolean modifyDeviceEmployeeMap(DeviceEmployeeMap deviceEmployeeMap) {
-        return mapper.modifyDeviceEmployeeMap(deviceEmployeeMap) > 0;
+    @PostMapping(value = "/get/employee")
+    public List<DeviceEmployeeMapView> getDeviceEmployeeMapViewByEmployee(@RequestParam(name = "employeeId") int employeeId){
+        return mapper.findByEmployee(employeeId);
+    }
+
+    @PostMapping(value = "/delete")
+    public boolean deleteDeviceEmployeeMap(DeviceEmployeeMap map){
+        return mapper.deleteDeviceEmployeeMap(map) > 0;
     }
 }
