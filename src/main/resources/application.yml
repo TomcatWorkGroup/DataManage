@@ -2,4 +2,4 @@ mybatis:
   type-aliases-package: com.itdreamworks.datamanage.entity
 spring:
   profiles:
-    active: prod
+    active: dev
