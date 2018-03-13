@@ -1,6 +1,8 @@
 package com.itdreamworks.datamanage.daocontroller;
 
+import com.itdreamworks.datamanage.entity.DeviceEmployeeMapViewForDevice;
 import com.itdreamworks.datamanage.entity.Employee;
+import com.itdreamworks.datamanage.mapper.DeviceEmployeeMapMapper;
 import com.itdreamworks.datamanage.mapper.EmployeeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +13,9 @@ import java.util.List;
 @RequestMapping(value = "/employee")
 public class EmployeeController {
     @Autowired
-    EmployeeMapper mapper;
+    private EmployeeMapper mapper;
+    @Autowired
+    private DeviceEmployeeMapMapper demDao;
 
     @GetMapping(value = "/list")
     public List<Employee> getAll() {
@@ -26,6 +30,15 @@ public class EmployeeController {
     @PostMapping(value = "/search")
     public List<Employee> search(@RequestParam(name = "orgType") int orgType,@RequestParam(name = "orgId") int orgId) {
         return mapper.findEmployeesByOrg(orgType,orgId);
+    }
+
+    @PostMapping(value = "/find")
+    public Employee findEmployee(String loginId){
+        return  mapper.findOneByLoginId(loginId);
+    }
+    @PostMapping(value = "/devices")
+    public List<DeviceEmployeeMapViewForDevice> getManageDevices(@RequestParam("employeeId") int employeeId){
+        return demDao.findEmployeeDevices(employeeId);
     }
 
     @PostMapping(value = "/modify")

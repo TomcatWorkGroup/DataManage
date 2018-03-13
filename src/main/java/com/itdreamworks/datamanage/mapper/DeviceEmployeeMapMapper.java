@@ -2,6 +2,7 @@ package com.itdreamworks.datamanage.mapper;
 
 import com.itdreamworks.datamanage.entity.DeviceEmployeeMap;
 import com.itdreamworks.datamanage.entity.DeviceEmployeeMapView;
+import com.itdreamworks.datamanage.entity.DeviceEmployeeMapViewForDevice;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 
@@ -20,6 +21,11 @@ public interface DeviceEmployeeMapMapper {
     @Select("select * from " + DeviceEmployeeMapView.TABLE_NAME + " where " + DeviceEmployeeMapView.COLUMN_EMPLOYEE_ID + "=#{employeeId}")
     @ResultType(DeviceEmployeeMapView.class)
     List<DeviceEmployeeMapView> findByEmployee(@Param("employeeId") int employeeId);
+
+
+    @Select("select * from " + DeviceEmployeeMapView.TABLE_NAME + " where " + DeviceEmployeeMapView.COLUMN_EMPLOYEE_ID + "=#{employeeId}")
+    @ResultType(DeviceEmployeeMapViewForDevice.class)
+    List<DeviceEmployeeMapViewForDevice> findEmployeeDevices(@Param("employeeId") int employeeId);
 
     @Delete("delete from Device_Employee_Map where EmployeeId=#{employeeId} and DeviceId =#{deviceId}")
     int deleteDeviceEmployeeMap(DeviceEmployeeMap DeviceEmployeeMap);
