@@ -24,6 +24,16 @@ public class DeviceController {
         return mapper.findAllByStatus(Device.STATUS_SELL);
     }
 
+    @PostMapping(value = "/find")
+    public Device find(@RequestParam("deviceNo") String deviceNo) {
+        return mapper.find(deviceNo);
+    }
+
+    @PostMapping(value = "/suffix")
+    public Device findBySuffix(@RequestParam("id") String suffix) {
+        return mapper.findBySuffix(suffix);
+    }
+
     @PostMapping(value = "/search")
     public List<Device> search(@RequestParam("enterpriseId") int enterpriseId,@RequestParam("manufacturerId") int manufacturerId) {
         return mapper.search(enterpriseId,manufacturerId);

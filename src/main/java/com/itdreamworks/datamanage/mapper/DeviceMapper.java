@@ -12,9 +12,17 @@ public interface DeviceMapper {
     @ResultType(Device.class)
     List<Device> findAll();
 
-    @Select("select * from Device where status=#{status}")
+    @Select("select * from Device where Status=#{status}")
     @ResultType(Device.class)
     List<Device> findAllByStatus(@Param("status") int status);
+
+    @Select("select * from Device where DeviceNo=#{deviceNo} and Status=1")
+    @ResultType(Device.class)
+    Device find(@Param("deviceNo") String deviceNo);
+
+    @Select("select * from Device where deviceSuffix=#{deviceSuffix} and Status=1")
+    @ResultType(Device.class)
+    Device findBySuffix(@Param("deviceSuffix") String deviceSuffix);
 
     @Select("select * from Device where EnterpriseId=#{enterpriseid} and ManufacturerId=#{manufacturerid}")
     @ResultType(Device.class)

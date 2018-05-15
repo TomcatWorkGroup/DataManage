@@ -23,8 +23,22 @@ public class EmployeeController {
     }
 
     @PostMapping(value = "/create")
-    public boolean create(Employee employee) {
-        return mapper.addEmployee(employee) > 0;
+    public String create(Employee employee) {
+        try {
+            Employee checkEmployee = mapper.findOneByLoginId(employee.getMobile());
+            if (null != checkEmployee) {
+                return "{\"code\":0,\"msg\":\"该手机号码用户已存在。\"}";
+            } else {
+                employee.setStatus(Employee.STATUS_ENABLE);
+                if (mapper.addEmployee(employee) > 0) {
+                    return "{\"code\":1,\"msg\":\"用户创建成功。\"}";
+                } else {
+                    return "{\"code\":0,\"msg\":\"操作失败。\"}";
+                }
+            }
+        }catch (Exception ex){
+            return String.format("{\"code\":0,\"msg\":\"%s\"}",ex.getMessage());
+        }
     }
 
     @PostMapping(value = "/search")

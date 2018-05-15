@@ -11,6 +11,42 @@ public class Device implements Serializable {
 
     private int id,enterpriseId,manufacturerId,status,runStatus;
     private String deviceNo,nickName;
+    /**
+     * 设备前10位编码
+     */
+    private String devicePrefix;
+    /**
+     * 设备后10位编码
+     */
+    private String deviceSuffix;
+    /**
+     * 设备类型 如：CTL_NJZJ_IPK2 PLC_BKSE_DRY
+     */
+    private String deviceType;
+
+    public String getDevicePrefix() {
+        return devicePrefix;
+    }
+
+    public void setDevicePrefix(String devicePrefix) {
+        this.devicePrefix = devicePrefix;
+    }
+
+    public String getDeviceSuffix() {
+        return deviceSuffix;
+    }
+
+    public void setDeviceSuffix(String deviceSuffix) {
+        this.deviceSuffix = deviceSuffix;
+    }
+
+    public String getDeviceType() {
+        return deviceType;
+    }
+
+    public void setDeviceType(String deviceType) {
+        this.deviceType = deviceType;
+    }
 
     @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     private Date importDatetime;
