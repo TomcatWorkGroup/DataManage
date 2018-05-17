@@ -25,6 +25,9 @@ public interface EmployeeMapper {
     @Update("update Employee set OrgType=#{orgType},OrgId=#{orgId},Password=#{password},Mobile=#{mobile},Email=#{email},WeiXin=#{weiXin},QQ=#{qQ},RealName=#{realName},Status=#{status},LastLoginDatetime=#{lastLoginDatetime},Mark=#{mark} where Id = #{id}")
     int modifyEmployee(Employee Employee);
 
+    @Update("update Employee set Password=#{password} where Mobile=#{loginId} or Email=#{loginId}")
+    int changeEmployeePassword(@Param("loginId") String loginId,@Param("password") String password);
+
     @Update("update Employee set Status=#{status} where Id=#{id}")
     int changeEmployeeStatus(Employee Employee);
 

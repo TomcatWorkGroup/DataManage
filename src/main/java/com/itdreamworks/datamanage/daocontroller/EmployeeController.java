@@ -64,4 +64,10 @@ public class EmployeeController {
     public boolean modifyEmployeeStatus(Employee employee) {
         return mapper.changeEmployeeStatus(employee) > 0;
     }
+
+    @PostMapping(value = "/changePassword")
+    public boolean changeEmployeePassword(String loginId,String password) {
+        return mapper.changeEmployeePassword(loginId,password) > 0;
+    }
+
 }
