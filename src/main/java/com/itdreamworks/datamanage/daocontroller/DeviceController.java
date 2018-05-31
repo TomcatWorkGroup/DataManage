@@ -24,9 +24,26 @@ public class DeviceController {
         return mapper.findAllByStatus(Device.STATUS_SELL);
     }
 
+    @GetMapping(value = "/ctl")
+    public List<Device> getCTL() {
+        return mapper.findAllCTLByStatus(Device.STATUS_SELL);
+    }
+
+
+    @GetMapping(value = "/plc")
+    public List<Device> getPLC() {
+        return mapper.findAllPLCByStatus(Device.STATUS_SELL);
+    }
+
+
     @PostMapping(value = "/find")
     public Device find(@RequestParam("deviceNo") String deviceNo) {
         return mapper.find(deviceNo);
+    }
+
+    @PostMapping(value = "/prefix")
+    public Device findByPrefix(@RequestParam("id") String prefix) {
+        return mapper.findBySuffix(prefix);
     }
 
     @PostMapping(value = "/suffix")
