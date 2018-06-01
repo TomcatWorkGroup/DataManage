@@ -41,9 +41,9 @@ public class DeviceController {
         return mapper.find(deviceNo);
     }
 
-    @PostMapping(value = "/prefix")
-    public Device findByPrefix(@RequestParam("id") String prefix) {
-        return mapper.findBySuffix(prefix);
+    @PostMapping(value = "/no")
+    public Device findByPrefix(@RequestParam("id") String no) {
+        return mapper.findByNo(no);
     }
 
     @PostMapping(value = "/suffix")

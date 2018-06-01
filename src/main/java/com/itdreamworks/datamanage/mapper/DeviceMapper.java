@@ -28,9 +28,9 @@ public interface DeviceMapper {
     @ResultType(Device.class)
     Device find(@Param("deviceNo") String deviceNo);
 
-    @Select("select * from Device2 where DevicePrefix=#{devicePrefix} and Status=1")
+    @Select("select * from Device2 where DeviceNo=#{deviceNo} and Status=1")
     @ResultType(Device.class)
-    Device findByPrefix(@Param("devicePrefix") String devicePrefix);
+    Device findByNo(@Param("deviceNo") String deviceNo);
 
     @Select("select * from Device where DeviceSuffix=#{deviceSuffix} and Status=1")
     @ResultType(Device.class)
