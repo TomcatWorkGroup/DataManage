@@ -3,9 +3,10 @@ package com.itdreamworks.datamanage.entity;
 import java.io.Serializable;
 
 public class CustomerCategory implements Serializable {
-    private  int id,customerId;
+    private int id, customerId;
     private String categoryName;
     private String localId;
+
     public int getId() {
         return id;
     }

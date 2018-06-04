@@ -52,8 +52,8 @@ public class DeviceController {
     }
 
     @PostMapping(value = "/search")
-    public List<Device> search(@RequestParam("enterpriseId") int enterpriseId,@RequestParam("manufacturerId") int manufacturerId) {
-        return mapper.search(enterpriseId,manufacturerId);
+    public List<Device> search(@RequestParam("enterpriseId") int enterpriseId, @RequestParam("manufacturerId") int manufacturerId) {
+        return mapper.search(enterpriseId, manufacturerId);
     }
 
     @PostMapping(value = "/create")

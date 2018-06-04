@@ -14,7 +14,7 @@ public interface EmployeeMapper {
 
     @Select("select * from Employee where OrgType = #{orgType} and OrgId = #{orgId}")
     @ResultType(Employee.class)
-    List<Employee> findEmployeesByOrg(@Param("orgType") int orgType,@Param("orgId") int orgId);
+    List<Employee> findEmployeesByOrg(@Param("orgType") int orgType, @Param("orgId") int orgId);
 
     @Select("select * from Employee where id=#{id}")
     Employee findOneById(@Param("id") int id);
@@ -26,7 +26,7 @@ public interface EmployeeMapper {
     int modifyEmployee(Employee Employee);
 
     @Update("update Employee set Password=#{password} where Mobile=#{loginId} or Email=#{loginId}")
-    int changeEmployeePassword(@Param("loginId") String loginId,@Param("password") String password);
+    int changeEmployeePassword(@Param("loginId") String loginId, @Param("password") String password);
 
     @Update("update Employee set Status=#{status} where Id=#{id}")
     int changeEmployeeStatus(Employee Employee);

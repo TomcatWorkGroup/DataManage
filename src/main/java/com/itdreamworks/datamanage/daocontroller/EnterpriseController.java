@@ -19,7 +19,7 @@ public class EnterpriseController {
     }
 
     @PostMapping(value = "/status")
-    public List<Enterprise> getEnterprisesByStatus(@RequestParam(name = "status",defaultValue = "-1") int status) {
+    public List<Enterprise> getEnterprisesByStatus(@RequestParam(name = "status", defaultValue = "-1") int status) {
         return mapper.findEnterprisesByStatus(status);
     }
 

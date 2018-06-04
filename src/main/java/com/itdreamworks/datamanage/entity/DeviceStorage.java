@@ -3,8 +3,8 @@ package com.itdreamworks.datamanage.entity;
 import java.io.Serializable;
 
 public class DeviceStorage implements Serializable {
-    private String deviceNo,nickName;
-    private int power,media;
+    private String deviceNo, nickName;
+    private int power, media;
 
     public String getDeviceNo() {
         return deviceNo;

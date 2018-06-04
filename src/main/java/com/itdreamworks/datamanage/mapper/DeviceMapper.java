@@ -38,7 +38,7 @@ public interface DeviceMapper {
 
     @Select("select * from Device where EnterpriseId=#{enterpriseid} and ManufacturerId=#{manufacturerid}")
     @ResultType(Device.class)
-    List<Device> search(@Param("enterpriseid") int status,@Param("manufacturerid") int manufacturerid);
+    List<Device> search(@Param("enterpriseid") int status, @Param("manufacturerid") int manufacturerid);
 
     @Select("select * from Device where id=#{id}")
     Device findOneById(@Param("id") int id);

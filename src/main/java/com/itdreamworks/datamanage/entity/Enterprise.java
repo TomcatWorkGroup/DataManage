@@ -15,7 +15,6 @@ public class Enterprise implements Serializable {
     }
 
 
-
     public int getId() {
         return id;
     }

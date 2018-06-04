@@ -22,7 +22,7 @@ public interface CustomerProductMapper {
     int changeCustomerProductStatus(CustomerProduct CustomerProduct);
 
     @Update("update CustomerProduct set CategoryId=0 where CustomerId=#{customerId} and CategoryId=#{oldCategoryId}")
-    int deleteCustomerProductCategory(@Param("customerId") int customerId,@Param("oldCategoryId") int oldCategoryId);
+    int deleteCustomerProductCategory(@Param("customerId") int customerId, @Param("oldCategoryId") int oldCategoryId);
 
     @Insert("insert into CustomerProduct (CustomerId,DeviceId,EnterpriseProductId,ProductName,Status) values (#{customerId},#{deviceId},#{enterpriseProductId},#{productName},#{status})")
     int addCustomerProduct(CustomerProduct CustomerProduct);

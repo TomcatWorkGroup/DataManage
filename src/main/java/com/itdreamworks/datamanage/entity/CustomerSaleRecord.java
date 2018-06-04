@@ -6,12 +6,14 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class CustomerSaleRecord implements Serializable {
-    private int id,customerProductId,customerId,endUserId;
+    private int id, customerProductId, customerId, endUserId;
     @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     private Date saleDatetime;
+
     public int getId() {
         return id;
     }
+
     public void setId(int id) {
         this.id = id;
     }

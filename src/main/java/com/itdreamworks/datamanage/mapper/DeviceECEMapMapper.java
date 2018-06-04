@@ -19,7 +19,6 @@ public interface DeviceECEMapMapper {
     int modifyDeviceECEMap(DeviceECEMap DeviceECEMap);
 
 
-
     @Insert("insert into Device_Enterprise_Customer_EndUser_Map (DeviceId,EnterpriseId,CustomId,EndUserId) values (#{deviceId},#{enterpriseId},#{customId},#{endUserId})")
     int addDeviceECEMap(DeviceECEMap DeviceECEMap);
 

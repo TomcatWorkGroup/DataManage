@@ -17,17 +17,19 @@ public class CustomerSaleRecordController {
     CustomerSaleRecordMapper mapper;
 
     @GetMapping(value = "/list")
-    public List<CustomerSaleRecord> getAll(){
-        return  mapper.findAll();
-    }
-    @PostMapping(value="/create")
-    public  boolean create(CustomerSaleRecord customerSaleRecord){
-        return mapper.addCustomerSaleRecord(customerSaleRecord)>0;
-    }
-    @PostMapping(value = "/modify")
-    public  boolean modifyCustomerSaleRecord(CustomerSaleRecord customerSaleRecord){
-        return  mapper.modifyCustomerSaleRecord(customerSaleRecord)>0;
+    public List<CustomerSaleRecord> getAll() {
+        return mapper.findAll();
     }
 
-    
+    @PostMapping(value = "/create")
+    public boolean create(CustomerSaleRecord customerSaleRecord) {
+        return mapper.addCustomerSaleRecord(customerSaleRecord) > 0;
+    }
+
+    @PostMapping(value = "/modify")
+    public boolean modifyCustomerSaleRecord(CustomerSaleRecord customerSaleRecord) {
+        return mapper.modifyCustomerSaleRecord(customerSaleRecord) > 0;
+    }
+
+
 }

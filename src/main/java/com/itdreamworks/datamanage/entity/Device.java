@@ -9,8 +9,8 @@ public class Device implements Serializable {
     public static final int STATUS_SELL = 1;
     public static final int STATUS_READY = 0;
 
-    private int id,enterpriseId,manufacturerId,status,runStatus;
-    private String deviceNo,nickName;
+    private int id, enterpriseId, manufacturerId, status, runStatus;
+    private String deviceNo, nickName;
     /**
      * 设备前10位编码
      */
@@ -50,6 +50,7 @@ public class Device implements Serializable {
 
     @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     private Date importDatetime;
+
     public int getId() {
         return id;
     }
@@ -57,6 +58,7 @@ public class Device implements Serializable {
     public void setId(int id) {
         this.id = id;
     }
+
     public int getEnterpriseId() {
         return enterpriseId;
     }
@@ -80,6 +82,7 @@ public class Device implements Serializable {
     public void setStatus(int status) {
         this.status = status;
     }
+
     public int getRunStatus() {
         return runStatus;
     }

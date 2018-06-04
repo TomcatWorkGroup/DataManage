@@ -4,8 +4,9 @@ import javax.print.DocFlavor;
 import java.io.Serializable;
 
 public class EndUser implements Serializable {
-    private  int id,enterpriseId,customerId,status;
-    private  String endUserName;
+    private int id, enterpriseId, customerId, status;
+    private String endUserName;
+
     public int getId() {
         return id;
     }

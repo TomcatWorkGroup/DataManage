@@ -3,8 +3,9 @@ package com.itdreamworks.datamanage.entity;
 import java.io.Serializable;
 
 public class Customer implements Serializable {
-    private int id, enterpriseId,status;
+    private int id, enterpriseId, status;
     private String customerName;
+
     public int getId() {
         return id;
     }

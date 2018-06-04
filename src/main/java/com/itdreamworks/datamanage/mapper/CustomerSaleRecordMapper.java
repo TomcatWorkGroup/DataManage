@@ -19,7 +19,6 @@ public interface CustomerSaleRecordMapper {
     int modifyCustomerSaleRecord(CustomerSaleRecord customerSaleRecord);
 
 
-
     @Insert("insert into Customer_Sale_Record (CustomerProductId,CustomerId,EndUserId,SaleDatetime) values (#{customerProductId},#{customerId},#{endUserId},#{saleDatetime})")
     int addCustomerSaleRecord(CustomerSaleRecord customerSaleRecord);
 

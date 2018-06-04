@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
     @Autowired
     CustomerCategoryService service;
-    @RequestMapping(method = RequestMethod.GET,value = "delete")
-    public void test(){
-        service.delete(12,"11");
+
+    @RequestMapping(method = RequestMethod.GET, value = "delete")
+    public void test() {
+        service.delete(12, "11");
     }
 }

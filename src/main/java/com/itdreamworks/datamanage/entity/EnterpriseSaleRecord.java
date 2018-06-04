@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class EnterpriseSaleRecord implements Serializable {
-    private int id,enterpriseProductId,enterpriseId,customerId,endUserId;
+    private int id, enterpriseProductId, enterpriseId, customerId, endUserId;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     private Date saleDatetime;

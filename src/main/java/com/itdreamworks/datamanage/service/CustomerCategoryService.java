@@ -12,12 +12,12 @@ public class CustomerCategoryService {
     @Autowired
     CustomerProductMapper productDao;
     @Autowired
-    CustomerCategoryMapper  customerCategoryDao;
+    CustomerCategoryMapper customerCategoryDao;
 
     @Transactional
-    public void delete(int customerId,String localId){
-        CustomerCategory category = customerCategoryDao.findOneByLocal(customerId,localId);
-        if(null != category) {
+    public void delete(int customerId, String localId) {
+        CustomerCategory category = customerCategoryDao.findOneByLocal(customerId, localId);
+        if (null != category) {
             productDao.deleteCustomerProductCategory(customerId, category.getId());
             customerCategoryDao.deleteCustomerCategory(customerId, localId);
         }

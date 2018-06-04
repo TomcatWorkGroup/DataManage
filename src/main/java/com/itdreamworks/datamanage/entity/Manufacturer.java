@@ -4,7 +4,8 @@ import java.io.Serializable;
 
 public class Manufacturer implements Serializable {
     private int id;
-    private String manufacturerCode,manufacturerName;
+    private String manufacturerCode, manufacturerName;
+
     public int getId() {
         return id;
     }
@@ -12,6 +13,7 @@ public class Manufacturer implements Serializable {
     public void setId(int id) {
         this.id = id;
     }
+
     public String getManufacturerCode() {
         return manufacturerCode;
     }
@@ -19,6 +21,7 @@ public class Manufacturer implements Serializable {
     public void setManufacturerCode(String manufacturerCode) {
         this.manufacturerCode = manufacturerCode;
     }
+
     public String getManufacturerName() {
         return manufacturerName;
     }

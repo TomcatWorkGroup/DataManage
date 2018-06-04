@@ -15,7 +15,7 @@ public interface CustomerCategoryMapper {
 
     @Select("select * from CustomerCategory where CustomerId=#{customerId} and LocalId=#{localId}")
     CustomerCategory findOneByLocal(@Param("customerId") int customerId,
-                             @Param("localId") String localId);
+                                    @Param("localId") String localId);
 
     @Select("select * from CustomerCategory where Id=#{id}")
     CustomerCategory findOneById(@Param("id") int id);
@@ -28,6 +28,6 @@ public interface CustomerCategoryMapper {
     int addCustomerCategory(CustomerCategory customerCategory);
 
     @Delete("delete from CustomerCategory where CustomerId = #{customerId} and LocalId = #{localId}")
-    int deleteCustomerCategory(@Param("customerId") int customerId,@Param("localId") String localId);
+    int deleteCustomerCategory(@Param("customerId") int customerId, @Param("localId") String localId);
 
 }

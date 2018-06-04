@@ -2,8 +2,9 @@ package com.itdreamworks.datamanage.entity;
 
 import java.io.Serializable;
 
-public class DeviceECEMap  implements Serializable {
-    private int id,deviceId,enterpriseId,customId,endUserId;
+public class DeviceECEMap implements Serializable {
+    private int id, deviceId, enterpriseId, customId, endUserId;
+
     public int getId() {
         return id;
     }
@@ -11,6 +12,7 @@ public class DeviceECEMap  implements Serializable {
     public void setId(int id) {
         this.id = id;
     }
+
     public int getDeviceId() {
         return deviceId;
     }

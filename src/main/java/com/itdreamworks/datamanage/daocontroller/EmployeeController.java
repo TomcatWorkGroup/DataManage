@@ -36,22 +36,23 @@ public class EmployeeController {
                     return "{\"code\":0,\"msg\":\"操作失败。\"}";
                 }
             }
-        }catch (Exception ex){
-            return String.format("{\"code\":0,\"msg\":\"%s\"}",ex.getMessage());
+        } catch (Exception ex) {
+            return String.format("{\"code\":0,\"msg\":\"%s\"}", ex.getMessage());
         }
     }
 
     @PostMapping(value = "/search")
-    public List<Employee> search(@RequestParam(name = "orgType") int orgType,@RequestParam(name = "orgId") int orgId) {
-        return mapper.findEmployeesByOrg(orgType,orgId);
+    public List<Employee> search(@RequestParam(name = "orgType") int orgType, @RequestParam(name = "orgId") int orgId) {
+        return mapper.findEmployeesByOrg(orgType, orgId);
     }
 
     @PostMapping(value = "/find")
-    public Employee findEmployee(String loginId){
-        return  mapper.findOneByLoginId(loginId);
+    public Employee findEmployee(String loginId) {
+        return mapper.findOneByLoginId(loginId);
     }
+
     @PostMapping(value = "/devices")
-    public List<DeviceEmployeeMapViewForDevice> getManageDevices(@RequestParam("employeeId") int employeeId){
+    public List<DeviceEmployeeMapViewForDevice> getManageDevices(@RequestParam("employeeId") int employeeId) {
         return demDao.findEmployeeDevices(employeeId);
     }
 
@@ -66,8 +67,8 @@ public class EmployeeController {
     }
 
     @PostMapping(value = "/changePassword")
-    public boolean changeEmployeePassword(String loginId,String password) {
-        return mapper.changeEmployeePassword(loginId,password) > 0;
+    public boolean changeEmployeePassword(String loginId, String password) {
+        return mapper.changeEmployeePassword(loginId, password) > 0;
     }
 
 }

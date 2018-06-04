@@ -19,7 +19,6 @@ public interface EnterpriseMapper {
     Enterprise findOneById(@Param("id") int id);
 
 
-
     @Update("update Enterprise set EnterpriseName=#{enterpriseName},Status=#{status} where Id = #{id}")
     int modifyEnterprise(Enterprise enterprise);
 

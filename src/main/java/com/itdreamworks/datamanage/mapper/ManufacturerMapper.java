@@ -19,7 +19,6 @@ public interface ManufacturerMapper {
     int modifyManufacturer(Manufacturer Manufacturer);
 
 
-
     @Insert("insert into Manufacturer (ManufacturerName,ManufacturerCode) values (#{manufacturerName},#{manufacturerCode})")
     int addManufacturer(Manufacturer Manufacturer);
 
