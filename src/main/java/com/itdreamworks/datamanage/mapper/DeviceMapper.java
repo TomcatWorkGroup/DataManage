@@ -1,7 +1,7 @@
 package com.itdreamworks.datamanage.mapper;
 
-import com.itdreamworks.datamanage.entity.Device;
-import com.itdreamworks.datamanage.entity.Token_Dist;
+import com.itdreamworks.datamanage.entity.db.Device;
+import com.itdreamworks.datamanage.entity.web.Token_Dist;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 
@@ -18,11 +18,11 @@ public interface DeviceMapper {
     List<String> test();
 
     //获取企业类型suffix
-    @Select("select deviceSuffix from Device where SUBSTRING(DeviceSuffix,1,2)=#{code}")
-    List<String> findDeviceSuffixByEnterId(String code);
+    @Select("select deviceSuffix,deviceType from Device where SUBSTRING(DeviceSuffix,1,2)=#{code}")
+    List<com.itdreamworks.datamanage.entity.web.Device> findDeviceSuffixByEnterId(String code);
     //获取客户类型的控制器suffix
-    @Select("select deviceSuffix from Device where SUBSTRING(DeviceSuffix,1,5)=#{code}")
-    List<String> findDeviceSuffixByCusId(String code);
+    @Select("select deviceSuffix,deviceType from Device where SUBSTRING(DeviceSuffix,1,5)=#{code}")
+    List<com.itdreamworks.datamanage.entity.web.Device> findDeviceSuffixByCusId(String code);
     //根据token获取编号
     @Select("select * from Token_Dict where token=#{token}")
     Token_Dist findCodeByToken(String token);

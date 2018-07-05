@@ -1,6 +1,6 @@
 package com.itdreamworks.datamanage.daocontroller;
 
-import com.itdreamworks.datamanage.entity.Employee;
+import com.itdreamworks.datamanage.entity.db.Employee;
 import com.itdreamworks.datamanage.mapper.EmployeeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -1,6 +1,6 @@
 package com.itdreamworks.datamanage.service;
 
-import com.itdreamworks.datamanage.entity.CustomerCategory;
+import com.itdreamworks.datamanage.entity.db.CustomerCategory;
 import com.itdreamworks.datamanage.mapper.CustomerCategoryMapper;
 import com.itdreamworks.datamanage.mapper.CustomerProductMapper;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,7 @@
 package com.itdreamworks.datamanage.daocontroller;
 
-import com.itdreamworks.datamanage.entity.DeviceEmployeeMapViewForDevice;
-import com.itdreamworks.datamanage.entity.Employee;
+import com.itdreamworks.datamanage.entity.db.DeviceEmployeeMapViewForDevice;
+import com.itdreamworks.datamanage.entity.db.Employee;
 import com.itdreamworks.datamanage.mapper.DeviceEmployeeMapMapper;
 import com.itdreamworks.datamanage.mapper.EmployeeMapper;
 import org.springframework.beans.factory.annotation.Autowired;

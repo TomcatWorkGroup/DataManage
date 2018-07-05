@@ -1,8 +1,8 @@
 package com.itdreamworks.datamanage.mapper;
 
-import com.itdreamworks.datamanage.entity.DeviceEmployeeMap;
-import com.itdreamworks.datamanage.entity.DeviceEmployeeMapView;
-import com.itdreamworks.datamanage.entity.DeviceEmployeeMapViewForDevice;
+import com.itdreamworks.datamanage.entity.db.DeviceEmployeeMap;
+import com.itdreamworks.datamanage.entity.db.DeviceEmployeeMapView;
+import com.itdreamworks.datamanage.entity.db.DeviceEmployeeMapViewForDevice;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 

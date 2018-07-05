@@ -1,9 +1,8 @@
 package com.itdreamworks.datamanage.daocontroller;
 
-import com.itdreamworks.datamanage.entity.DeviceEmployeeMap;
-import com.itdreamworks.datamanage.entity.DeviceEmployeeMapView;
+import com.itdreamworks.datamanage.entity.db.DeviceEmployeeMap;
+import com.itdreamworks.datamanage.entity.db.DeviceEmployeeMapView;
 import com.itdreamworks.datamanage.mapper.DeviceEmployeeMapMapper;
-import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

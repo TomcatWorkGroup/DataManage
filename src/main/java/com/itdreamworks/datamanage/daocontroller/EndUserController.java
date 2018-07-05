@@ -1,6 +1,6 @@
 package com.itdreamworks.datamanage.daocontroller;
 
-import com.itdreamworks.datamanage.entity.EndUser;
+import com.itdreamworks.datamanage.entity.db.EndUser;
 import com.itdreamworks.datamanage.mapper.EndUserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

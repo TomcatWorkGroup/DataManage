@@ -1,4 +1,4 @@
-package com.itdreamworks.datamanage.entity;
+package com.itdreamworks.datamanage.entity.db;
 
 import java.io.Serializable;
 

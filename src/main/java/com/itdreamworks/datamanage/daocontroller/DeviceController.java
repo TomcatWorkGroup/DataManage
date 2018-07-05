@@ -1,7 +1,7 @@
 package com.itdreamworks.datamanage.daocontroller;
 
-import com.itdreamworks.datamanage.entity.Device;
-import com.itdreamworks.datamanage.entity.Token_Dist;
+import com.itdreamworks.datamanage.entity.db.Device;
+import com.itdreamworks.datamanage.entity.web.Token_Dist;
 import com.itdreamworks.datamanage.mapper.DeviceMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,8 +22,8 @@ public class DeviceController {
     }
 
     @GetMapping(value = "/system")
-    public List<String> getDeviceByNo(@RequestParam("uuid") String token) {
-        List<String> list = Collections.emptyList();
+    public List<com.itdreamworks.datamanage.entity.web.Device> getDeviceByNo(@RequestParam("uuid") String token) {
+        List<com.itdreamworks.datamanage.entity.web.Device> list = Collections.emptyList();
         Token_Dist token_dist = mapper.findCodeByToken(token);
         if (token_dist == null) return list;
         if (token_dist.getType() == 1) {

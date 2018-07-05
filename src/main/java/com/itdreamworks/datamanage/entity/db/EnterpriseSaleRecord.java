@@ -1,12 +1,13 @@
-package com.itdreamworks.datamanage.entity;
+package com.itdreamworks.datamanage.entity.db;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.util.Date;
 
-public class CustomerSaleRecord implements Serializable {
-    private int id, customerProductId, customerId, endUserId;
+public class EnterpriseSaleRecord implements Serializable {
+    private int id, enterpriseProductId, enterpriseId, customerId, endUserId;
+
     @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     private Date saleDatetime;
 
@@ -18,13 +19,20 @@ public class CustomerSaleRecord implements Serializable {
         this.id = id;
     }
 
-
-    public int getCustomerProductId() {
-        return customerProductId;
+    public int getEnterpriseProductId() {
+        return enterpriseProductId;
     }
 
-    public void setCustomerProductId(int customerProductId) {
-        this.customerProductId = customerProductId;
+    public void setEnterpriseProductId(int enterpriseProductId) {
+        this.enterpriseProductId = enterpriseProductId;
+    }
+
+    public int getEnterpriseId() {
+        return enterpriseId;
+    }
+
+    public void setEnterpriseId(int enterpriseId) {
+        this.enterpriseId = enterpriseId;
     }
 
     public int getCustomerId() {
@@ -36,7 +44,7 @@ public class CustomerSaleRecord implements Serializable {
     }
 
     public int getEndUserId() {
-        return customerProductId;
+        return endUserId;
     }
 
     public void setEndUserId(int endUserId) {

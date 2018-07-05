@@ -1,6 +1,6 @@
 package com.itdreamworks.datamanage.daocontroller;
 
-import com.itdreamworks.datamanage.entity.CustomerProduct;
+import com.itdreamworks.datamanage.entity.db.CustomerProduct;
 import com.itdreamworks.datamanage.mapper.CustomerProductMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

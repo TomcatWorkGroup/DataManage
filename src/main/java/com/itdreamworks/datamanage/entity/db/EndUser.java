@@ -1,4 +1,4 @@
-package com.itdreamworks.datamanage.entity;
+package com.itdreamworks.datamanage.entity.db;
 
 import javax.print.DocFlavor;
 import java.io.Serializable;

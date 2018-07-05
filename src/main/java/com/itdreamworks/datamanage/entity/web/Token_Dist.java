@@ -1,4 +1,4 @@
-package com.itdreamworks.datamanage.entity;
+package com.itdreamworks.datamanage.entity.web;
 
 //客户端唯一标识
 public class Token_Dist {

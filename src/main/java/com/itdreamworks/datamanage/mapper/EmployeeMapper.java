@@ -1,6 +1,6 @@
 package com.itdreamworks.datamanage.mapper;
 
-import com.itdreamworks.datamanage.entity.Employee;
+import com.itdreamworks.datamanage.entity.db.Employee;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 

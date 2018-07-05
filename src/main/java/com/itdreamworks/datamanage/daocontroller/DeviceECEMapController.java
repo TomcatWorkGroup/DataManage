@@ -1,6 +1,6 @@
 package com.itdreamworks.datamanage.daocontroller;
 
-import com.itdreamworks.datamanage.entity.DeviceECEMap;
+import com.itdreamworks.datamanage.entity.db.DeviceECEMap;
 import com.itdreamworks.datamanage.mapper.DeviceECEMapMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
