@@ -1,6 +1,6 @@
 package com.itdreamworks.datamanage.entity.web;
 
-public class Device {
+public class DeviceModel {
 
     private String deviceSuffix,deviceType;
 

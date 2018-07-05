@@ -1,6 +1,7 @@
 package com.itdreamworks.datamanage.mapper;
 
 import com.itdreamworks.datamanage.entity.db.Device;
+import com.itdreamworks.datamanage.entity.web.DeviceModel;
 import com.itdreamworks.datamanage.entity.web.Token_Dist;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
@@ -10,19 +11,17 @@ import java.util.List;
 @Component
 public interface DeviceMapper {
     @Select("select * from Device")
-    @ResultType(Device.class)
     List<Device> findAll();
 
     @Select("select DeviceSuffix from Device")
-    @ResultType(Device.class)
     List<String> test();
 
     //获取企业类型suffix
     @Select("select deviceSuffix,deviceType from Device where SUBSTRING(DeviceSuffix,1,2)=#{code}")
-    List<com.itdreamworks.datamanage.entity.web.Device> findDeviceSuffixByEnterId(String code);
+    List<DeviceModel> findDeviceSuffixByEnterId(String code);
     //获取客户类型的控制器suffix
     @Select("select deviceSuffix,deviceType from Device where SUBSTRING(DeviceSuffix,1,5)=#{code}")
-    List<com.itdreamworks.datamanage.entity.web.Device> findDeviceSuffixByCusId(String code);
+    List<DeviceModel> findDeviceSuffixByCusId(String code);
     //根据token获取编号
     @Select("select * from Token_Dict where token=#{token}")
     Token_Dist findCodeByToken(String token);
@@ -58,13 +57,13 @@ public interface DeviceMapper {
     @Select("select * from Device where id=#{id}")
     Device findOneById(@Param("id") int id);
 
-    @Update("update Device set DeviceNo=#{deviceNo},Status=#{status},RunStatus=#{runStatus},NickName=#{nickName} where Id = #{id}")
+    @Update("update DeviceModel set DeviceNo=#{deviceNo},Status=#{status},RunStatus=#{runStatus},NickName=#{nickName} where Id = #{id}")
     int modifyDevice(Device Device);
 
-    @Update("update Device set Status=#{status} where Id=#{id}")
+    @Update("update DeviceModel set Status=#{status} where Id=#{id}")
     int changeDeviceStatus(Device Device);
 
-    @Insert("insert into Device (EnterpriseId,DeviceNo,ManufacturerId,Status,RunStatus,ImportDatetime,NickName) values (#{enterpriseId},#{deviceNo},#{manufacturerId},#{status},#{runStatus},#{importDatetime},#{nickName})")
+    @Insert("insert into DeviceModel (EnterpriseId,DeviceNo,ManufacturerId,Status,RunStatus,ImportDatetime,NickName) values (#{enterpriseId},#{deviceNo},#{manufacturerId},#{status},#{runStatus},#{importDatetime},#{nickName})")
     int addDevice(Device Device);
 
 }
