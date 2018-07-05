@@ -1,10 +1,12 @@
 package com.itdreamworks.datamanage.daocontroller;
 
 import com.itdreamworks.datamanage.entity.Device;
+import com.itdreamworks.datamanage.entity.Token_Dist;
 import com.itdreamworks.datamanage.mapper.DeviceMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -13,6 +15,24 @@ import java.util.List;
 public class DeviceController {
     @Autowired
     DeviceMapper mapper;
+
+    @GetMapping(value = "/test")
+    public List<String> test() {
+        return mapper.test();
+    }
+
+    @GetMapping(value = "/system")
+    public List<String> getDeviceByNo(@RequestParam("uuid") String token) {
+        List<String> list = Collections.emptyList();
+        Token_Dist token_dist = mapper.findCodeByToken(token);
+        if (token_dist == null) return list;
+        if (token_dist.getType() == 1) {
+            return mapper.findDeviceSuffixByEnterId(token_dist.getCode());
+        } else if (token_dist.getType() == 2) {
+            return mapper.findDeviceSuffixByCusId(token_dist.getCode());
+        }
+        return list;
+    }
 
     @GetMapping(value = "/list")
     public List<Device> getAll() {
@@ -43,7 +63,7 @@ public class DeviceController {
 
     @PostMapping(value = "/no")
     public Device findByPrefix(@RequestParam("id") String no) {
-        return mapper.findByNo(no);
+        return mapper.findByDeviceNo(no);
     }
 
     @PostMapping(value = "/suffix")
