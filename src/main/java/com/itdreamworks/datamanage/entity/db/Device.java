@@ -9,7 +9,30 @@ public class Device implements Serializable {
     public static final int STATUS_SELL = 1;
     public static final int STATUS_READY = 0;
 
-    private int id, enterpriseId, manufacturerId, status, runStatus;
+    private int id;
+    private int enterpriseId;
+    private int manufacturerId;
+    private int status;
+    private int runStatus;
+    private int power;
+
+    public int getPower() {
+        return power;
+    }
+
+    public void setPower(int power) {
+        this.power = power;
+    }
+
+    public int getMedia() {
+        return media;
+    }
+
+    public void setMedia(int media) {
+        this.media = media;
+    }
+
+    private int media;
     private String deviceNo, nickName;
     /**
      * 设备前10位编码
