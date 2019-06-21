@@ -1,10 +1,12 @@
 package com.itdreamworks.datamanage.entity.db;
 
-import javax.print.DocFlavor;
 import java.io.Serializable;
 
+/**
+ * 终端用户数据结构
+ */
 public class EndUser implements Serializable {
-    private int id, enterpriseId, customerId, status;
+    private int id, status;
     private String endUserName;
 
     public int getId() {
@@ -31,19 +33,4 @@ public class EndUser implements Serializable {
         this.endUserName = endUserName;
     }
 
-    public int getEnterpriseId() {
-        return enterpriseId;
-    }
-
-    public void setEnterpriseId(int enterpriseId) {
-        this.enterpriseId = enterpriseId;
-    }
-
-    public int getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
-    }
 }

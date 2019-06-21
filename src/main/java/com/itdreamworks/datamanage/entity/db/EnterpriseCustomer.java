@@ -3,10 +3,10 @@ package com.itdreamworks.datamanage.entity.db;
 import java.io.Serializable;
 
 /**
- * 锅炉厂数据结构
+ * 企业客户数据结构
  */
-public class Customer implements Serializable {
-    private int id, status;
+public class EnterpriseCustomer implements Serializable {
+    private int id, enterpriseId;
     private String customerName;
 
     public int getId() {
@@ -17,13 +17,7 @@ public class Customer implements Serializable {
         this.id = id;
     }
 
-    public int getStatus() {
-        return status;
-    }
 
-    public void setStatus(int status) {
-        this.status = status;
-    }
 
     public String getCustomerName() {
         return customerName;
@@ -33,4 +27,11 @@ public class Customer implements Serializable {
         this.customerName = customerName;
     }
 
+    public int getEnterpriseId() {
+        return enterpriseId;
+    }
+
+    public void setEnterpriseId(int enterpriseId) {
+        this.enterpriseId = enterpriseId;
+    }
 }

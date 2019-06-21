@@ -5,6 +5,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * 设备数据结构
+ */
 public class Device implements Serializable {
     public static final int STATUS_SELL = 1;
     public static final int STATUS_READY = 0;

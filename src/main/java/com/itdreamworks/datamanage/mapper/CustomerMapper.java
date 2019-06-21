@@ -15,14 +15,21 @@ public interface CustomerMapper {
     @Select("select * from Customer where id=#{id}")
     Customer findOneById(@Param("id") int id);
 
-    @Update("update Customer set EnterpriseId=#{enterpriseId},CustomerName=#{customerName},Status=#{status} where Id = #{id}")
-    int modifyCustomer(Customer customer);
+    @Select("select * from Customer where CustomerName like CONCAT('%',#{customerName},'%')")
+    List<Customer> find(@Param("customerName") String customerName);
 
-    @Update("update Customer set Status=#{status} where Id=#{id}")
-    int changeCustomerStatus(Customer customer);
+    @Update("update New_Customer set CustomerName=#{customerName},Status=#{status} where Id = #{id}")
+    void modifyCustomer(@Param("id") int id,@Param("customerName") String customerName,@Param("status") int status);
 
-    @Insert("insert into Customer (EnterpriseId,CustomerName,Status) values (#{enterpriseId},#{customerName},#{status})")
-    int addCustomer(Customer customer);
+//    @Update("update Customer set Status=#{status} where Id=#{id}")
+//    int changeCustomerStatus(Customer customer);
+
+    @Select("select count(CustomerName) from New_Customer where CustomerName=#{customerName}")
+    int checkCustomer(@Param("customerName") String customerName);
+
+    @Insert("insert into New_Customer (CustomerName,Status) values (#{enterpriseId},#{customerName},#{status})")
+    void addCustomer(@Param("customerName") String customerName,
+                    @Param("status") int status);
 
 
 }

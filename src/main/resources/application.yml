@@ -2,6 +2,6 @@ mybatis:
   type-aliases-package: com.itdreamworks.datamanage.entity
 spring:
   profiles:
-    active: prod
+    active: dev
 server:
-  port: 8081
+  port: 8080

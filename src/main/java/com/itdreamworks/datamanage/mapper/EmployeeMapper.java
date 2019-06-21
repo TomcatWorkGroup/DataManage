@@ -23,15 +23,18 @@ public interface EmployeeMapper {
     Employee findOneByLoginId(@Param("loginId") String loginId);
 
     @Update("update Employee set OrgType=#{orgType},OrgId=#{orgId},Password=#{password},Mobile=#{mobile},Email=#{email},WeiXin=#{weiXin},QQ=#{qQ},RealName=#{realName},Status=#{status},LastLoginDatetime=#{lastLoginDatetime},Mark=#{mark} where Id = #{id}")
-    int modifyEmployee(Employee Employee);
+    void modifyEmployee(Employee Employee);
+
+    @Update("update Employee set Mobile=#{mobile},Email=#{email},RealName=#{realName},QQ=#{qq} where Mobile=#{loginId} or Email=#{loginId}")
+    void changeEmployeeInfos(@Param("loginId") String loginId, @Param("mobile") String mobile, @Param("email") String email, @Param("qq") String qq,@Param("realName") String realName);
 
     @Update("update Employee set Password=#{password} where Mobile=#{loginId} or Email=#{loginId}")
-    int changeEmployeePassword(@Param("loginId") String loginId, @Param("password") String password);
+    void changeEmployeePassword(@Param("loginId") String loginId, @Param("password") String password);
 
-    @Update("update Employee set Status=#{status} where Id=#{id}")
-    int changeEmployeeStatus(Employee Employee);
+    @Update("update Employee set Status=#{status} where Mobile=#{loginId} or Email=#{loginId}")
+    void changeEmployeeStatus(@Param("loginId") String loginId, @Param("status") int status);
 
-    @Insert("insert into Employee (OrgType,OrgId,Password,Mobile,Email,WeiXin,QQ,RealName,Status,LastLoginDatetime,Mark) values (#{orgType},#{orgId},#{password},#{mobile},#{email},#{weiXin},#{qQ},#{realName},#{status},#{lastLoginDatetime},#{mark})")
-    int addEmployee(Employee Employee);
+    @Insert("insert into Employee (OrgType,OrgId,Password,Mobile,Email,QQ,RealName,Status,LastLoginDatetime,Mark) values (#{orgType},#{orgId},#{password},#{mobile},#{email},#{qQ},#{realName},#{status},#{lastLoginDatetime},#{mark})")
+    void addEmployee(Employee Employee);
 
 }

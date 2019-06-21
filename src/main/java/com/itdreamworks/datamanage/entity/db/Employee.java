@@ -5,6 +5,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * 注册用户数据结构
+ */
 public class Employee implements Serializable {
     public static final int STATUS_ENABLE = 1;
     public static final int STATUS_DISABLE = 0;

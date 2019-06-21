@@ -1,74 +1,145 @@
 package com.itdreamworks.datamanage.daocontroller;
 
-import com.itdreamworks.datamanage.entity.db.DeviceEmployeeMapViewForDevice;
 import com.itdreamworks.datamanage.entity.db.Employee;
-import com.itdreamworks.datamanage.mapper.DeviceEmployeeMapMapper;
+import com.itdreamworks.datamanage.entity.web.Result;
 import com.itdreamworks.datamanage.mapper.EmployeeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
+/**
+ * 注册用户管理接口
+ */
 @RestController
 @RequestMapping(value = "/employee")
 public class EmployeeController {
+
     @Autowired
     private EmployeeMapper mapper;
-    @Autowired
-    private DeviceEmployeeMapMapper demDao;
 
+    /**
+     * 获取注册用户列表
+     * @return
+     */
     @GetMapping(value = "/list")
-    public List<Employee> getAll() {
-        return mapper.findAll();
-    }
-
-    @PostMapping(value = "/create")
-    public String create(Employee employee) {
+    public Result getAll() {
         try {
-            Employee checkEmployee = mapper.findOneByLoginId(employee.getMobile());
-            if (null != checkEmployee) {
-                return "{\"code\":0,\"msg\":\"该手机号码用户已存在。\"}";
-            } else {
-                employee.setStatus(Employee.STATUS_ENABLE);
-                if (mapper.addEmployee(employee) > 0) {
-                    return "{\"code\":1,\"msg\":\"用户创建成功。\"}";
-                } else {
-                    return "{\"code\":0,\"msg\":\"操作失败。\"}";
-                }
-            }
+            return Result.getSuccessResult(mapper.findAll());
         } catch (Exception ex) {
-            return String.format("{\"code\":0,\"msg\":\"%s\"}", ex.getMessage());
+            return Result.getFailResult(ex.getMessage());
         }
     }
 
-    @PostMapping(value = "/search")
-    public List<Employee> search(@RequestParam(name = "orgType") int orgType, @RequestParam(name = "orgId") int orgId) {
-        return mapper.findEmployeesByOrg(orgType, orgId);
+    /**
+     * 创建用户
+     * @param employee
+     * @return
+     */
+    @PostMapping(value = "/create")
+    public Result create(Employee employee) {
+        try {
+            Employee checkEmployee = mapper.findOneByLoginId(employee.getMobile());
+            if (null != checkEmployee) {
+                return Result.getFailResult("账号已存在.");
+            } else {
+                employee.setStatus(Employee.STATUS_ENABLE);
+                mapper.addEmployee(employee);
+                return Result.getSuccessResult();
+            }
+        } catch (Exception ex) {
+            return Result.getFailResult(ex.getMessage());
+        }
     }
 
-    @PostMapping(value = "/find")
-    public Employee findEmployee(String loginId) {
-        return mapper.findOneByLoginId(loginId);
+//    @PostMapping(value = "/search")
+//    public List<Employee> search(@RequestParam(name = "orgType") int orgType, @RequestParam(name = "orgId") int orgId) {
+//        return mapper.findEmployeesByOrg(orgType, orgId);
+//    }
+
+    /**
+     * 根据注册手机号/邮箱查询用户信息
+     * @param loginId
+     * @return
+     */
+    @GetMapping(value = "/find")
+    public Result findEmployee(String loginId) {
+        try {
+            return Result.getSuccessResult(mapper.findOneByLoginId(loginId));
+        } catch (Exception ex) {
+            return Result.getFailResult(ex.getMessage());
+        }
     }
 
-    @PostMapping(value = "/devices")
-    public List<DeviceEmployeeMapViewForDevice> getManageDevices(@RequestParam("employeeId") int employeeId) {
-        return demDao.findEmployeeDevices(employeeId);
-    }
+//    @PostMapping(value = "/devices")
+//    public List<DeviceEmployeeMapViewForDevice> getManageDevices(@RequestParam("employeeId") int employeeId) {
+//        return demDao.findEmployeeDevices(employeeId);
+//    }
 
+    /**
+     * 修改用户信息
+     * 说明：核心管理平台专用接口
+     * @param employee
+     * @return
+     */
     @PostMapping(value = "/modify")
-    public boolean modifyEmployee(Employee employee) {
-        return mapper.modifyEmployee(employee) > 0;
+    public Result modifyEmployee(Employee employee) {
+        try {
+            mapper.modifyEmployee(employee);
+            return Result.getSuccessResult();
+        } catch (Exception ex) {
+            return Result.getFailResult(ex.getMessage());
+        }
     }
 
-    @PostMapping(value = "/change")
-    public boolean modifyEmployeeStatus(Employee employee) {
-        return mapper.changeEmployeeStatus(employee) > 0;
+    /**
+     * 修改用户状态
+     * 说明：核心管理平台专用接口
+     * @param loginId
+     * @param status
+     * @return
+     */
+    @PostMapping(value = "/change/status")
+    public Result modifyEmployeeStatus(String loginId, int status) {
+        try {
+            mapper.changeEmployeeStatus(loginId, status);
+            return Result.getSuccessResult();
+        } catch (Exception ex) {
+            return Result.getFailResult(ex.getMessage());
+        }
     }
 
-    @PostMapping(value = "/changePassword")
-    public boolean changeEmployeePassword(String loginId, String password) {
-        return mapper.changeEmployeePassword(loginId, password) > 0;
+    /**
+     * 修改基本信息
+     * 说明：微信或平台用户修改基本信息的接口
+     * @param loginId
+     * @param mobile
+     * @param email
+     * @param realName
+     * @return
+     */
+    @PostMapping(value = "/change/infos")
+    public Result changeEmployeeInfos(String loginId,String mobile, String email, String qq,String realName) {
+        try {
+            mapper.changeEmployeeInfos(loginId, mobile,email,qq,realName);
+            return Result.getSuccessResult();
+        } catch (Exception ex) {
+            return Result.getFailResult(ex.getMessage());
+        }
+    }
+
+    /**
+     * 修改密码
+     * @param loginId
+     * @param password
+     * @return
+     */
+    @PostMapping(value = "/change/password")
+    public Result changeEmployeePassword(String loginId, String password) {
+        try {
+            mapper.changeEmployeePassword(loginId, password);
+            return Result.getSuccessResult();
+        } catch (Exception ex) {
+            return Result.getFailResult(ex.getMessage());
+        }
     }
 
 }

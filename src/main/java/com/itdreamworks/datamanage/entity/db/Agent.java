@@ -3,11 +3,21 @@ package com.itdreamworks.datamanage.entity.db;
 import java.io.Serializable;
 
 /**
- * 公司数据结构
+ * 代理商数据结构
  */
-public class Company implements Serializable {
+public class Agent implements Serializable {
     private int id, status;
-    private String companyName;
+
+    public String getAgentName() {
+        return agentName;
+    }
+
+    public void setAgentName(String agentName) {
+        this.agentName = agentName;
+    }
+
+    private String agentName;
+
 
     public int getId() {
         return id;
@@ -25,11 +35,5 @@ public class Company implements Serializable {
         this.status = status;
     }
 
-    public String getCompanyName() {
-        return companyName;
-    }
 
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
-    }
 }

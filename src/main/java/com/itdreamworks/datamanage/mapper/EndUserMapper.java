@@ -15,12 +15,18 @@ public interface EndUserMapper {
     @Select("select * from EndUser where id=#{id}")
     EndUser findOneById(@Param("id") int id);
 
-    @Update("update EndUser set EnterpriseId=#{enterpriseId},CustomerId=#{customerId},EndUserName=#{endUserName},Status=#{status} where Id = #{id}")
-    int modifyEndUser(EndUser EndUser);
+    @Select("select * from EndUser where EndUserName like CONCAT('%',#{endUserName},'%')")
+    List<EndUser> find(@Param("endUserName") String endUserName);
 
-    @Update("update EndUser set Status=#{status} where Id=#{id}")
-    int changeEndUserStatus(EndUser EndUser);
+    @Update("update EndUser set EndUserName=#{endUserName},Status=#{status} where Id = #{id}")
+    int modifyEndUser(@Param("id") int id,@Param("endUserName") String endUserName,@Param("status") int status);
 
-    @Insert("insert into EndUser (EnterpriseId,CustomerId,EndUserName,Status) values (#{enterpriseId},#{customerId},#{endUserName},#{status})")
-    int addEndUser(EndUser EndUser);
+//    @Update("update EndUser set Status=#{status} where Id=#{id}")
+//    int changeEndUserStatus(EndUser EndUser);
+
+    @Select("select count(EndUserName) from EndUser where EndUserName=#{endUserName}")
+    int checkEndUser(@Param("endUserName") String agentName);
+
+    @Insert("insert into EndUser (EndUserName,Status) values (#{endUserName},#{status})")
+    int addEndUser(@Param("endUserName") String endUserName,@Param("status") int status);
 }

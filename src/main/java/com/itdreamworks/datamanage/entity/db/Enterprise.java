@@ -2,6 +2,9 @@ package com.itdreamworks.datamanage.entity.db;
 
 import java.io.Serializable;
 
+/**
+ * 企业数据结构
+ */
 public class Enterprise implements Serializable {
     private int id, status;
     private String enterpriseName;

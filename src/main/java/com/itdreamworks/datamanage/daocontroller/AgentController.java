@@ -1,29 +1,31 @@
 package com.itdreamworks.datamanage.daocontroller;
 
 import com.itdreamworks.datamanage.entity.web.Result;
-import com.itdreamworks.datamanage.mapper.CompanyMapper;
+import com.itdreamworks.datamanage.mapper.AgentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 /**
- * 公司管理接口
+ * 代理商管理
+ * 核心数据库中仅存储代理商基本信息与用户映射关系
+ * 代理商产品、员工、客户均由锅炉厂数据库存储
  */
+
 @RestController
-@RequestMapping(value = "/company")
-public class CompanyController {
+@RequestMapping(value = "/agent")
+public class AgentController {
     @Autowired
-    CompanyMapper mapper;
+    AgentMapper mapper;
 
     /**
-     * 获取公司列表
+     * 获取代理商列表
      * @return
      */
     @GetMapping(value = "/list")
-    public Result getAllCompany() {
+    public Result getAll() {
         try {
             return Result.getSuccessResult(mapper.findAll());
         } catch (Exception ex) {
@@ -32,45 +34,39 @@ public class CompanyController {
     }
 
     /**
-     * 创建公司
-     * @param companyName
+     * 创建代理商
+     * @param agentName
      * @param status
      * @return
      */
     @PostMapping(value = "/create")
-    public Result create(String companyName,int status) {
+    public Result create(String agentName, int status) {
         try {
-            mapper.addCompany(companyName,status);
+            if (0 < mapper.checkAgent(agentName)) {
+                return Result.getFailResult("该代理商已存在.");
+            }
+            mapper.addAgent(agentName, status);
             return Result.getSuccessResult();
         } catch (Exception ex) {
             return Result.getFailResult(ex.getMessage());
         }
+
     }
 
     /**
-     * 修改公司信息
+     * 修改代理商信息
      * @param id
-     * @param companyName
+     * @param agentName
      * @param status
      * @return
      */
     @PostMapping(value = "/modify")
-    public Result modifyCompany(int id,String companyName,int status) {
+    public Result modify(int id,String agentName,int status) {
         try {
-            mapper.modifyCompany(id,companyName,status);
+            mapper.modifyAgent(id,agentName,status);
             return Result.getSuccessResult();
         } catch (Exception ex) {
             return Result.getFailResult(ex.getMessage());
         }
     }
-
-//    @PostMapping(value = "/change")
-//    public Result modifyCompanyStatus(Company company) {
-//        try {
-//            mapper.changeCompanyStatus(company);
-//            return Result.getSuccessResult();
-//        } catch (Exception ex) {
-//            return Result.getFailResult(ex.getMessage());
-//        }
-//    }
 }
